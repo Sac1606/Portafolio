@@ -4,6 +4,7 @@ import { Footer } from "../shared/components/layout/Footer"
 import { Hero } from "../features/hero/components/Hero"
 import { About } from "../features/about/components/About"
 import { Projects } from "../features/projects/components/Projects"
+import { Technologies } from "../features/tech/components/Technologies"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Hero />
         <About />
         <Projects />
+        <Technologies />
       </main>
       <Footer />
     </div>
