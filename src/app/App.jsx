@@ -3,6 +3,7 @@ import { Navbar } from "../shared/components/layout/Navbar"
 import { Footer } from "../shared/components/layout/Footer"
 import { Hero } from "../features/hero/components/Hero"
 import { About } from "../features/about/components/About"
+import { Projects } from "../features/projects/components/Projects"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <main>
         <Hero />
         <About />
+        <Projects />
       </main>
       <Footer />
     </div>
