@@ -5,6 +5,7 @@ import { Hero } from "../features/hero/components/Hero"
 import { About } from "../features/about/components/About"
 import { Projects } from "../features/projects/components/Projects"
 import { Technologies } from "../features/tech/components/Technologies"
+import { Contact } from "../features/contact/components/Contact"
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <About />
         <Projects />
         <Technologies />
+        <Contact />
       </main>
       <Footer />
     </div>
