@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
 import { profile } from "../../../data/profile"
 import heroPc from "../../../assets/img/hero-pc.jpg"
 import { TerminalWindow } from "../../../shared/components/ui/TerminalWindow"
 import { TerminalPrompt } from "../../../shared/components/ui/TerminalPrompt"
+import { TransitionLink } from "../../../shared/components/ui/TransitionLink"
 
 const bootLines = [
   { type: "prompt", command: "whoami" },
@@ -40,27 +40,24 @@ export const Hero = () => {
             </div>
 
             <div className="flex flex-wrap gap-2 border-t border-term-border pt-4">
-              <Link
+              <TransitionLink
                 to="/proyectos"
-                viewTransition
                 className="inline-flex items-center rounded-md bg-term-green px-4 py-2 font-mono text-xs font-semibold text-term-bg transition hover:brightness-110 sm:text-sm"
               >
                 [ proyectos ]
-              </Link>
-              <Link
+              </TransitionLink>
+              <TransitionLink
                 to="/contacto"
-                viewTransition
                 className="inline-flex items-center rounded-md border border-term-border bg-term-elevated px-4 py-2 font-mono text-xs font-semibold text-term-text transition hover:border-term-green/40 hover:text-term-green sm:text-sm"
               >
                 [ contacto ]
-              </Link>
-              <Link
+              </TransitionLink>
+              <TransitionLink
                 to="/sobre-mi"
-                viewTransition
                 className="inline-flex items-center rounded-md border border-term-border bg-term-elevated px-4 py-2 font-mono text-xs font-semibold text-term-muted transition hover:text-term-text sm:text-sm"
               >
                 [ sobre-mi ]
-              </Link>
+              </TransitionLink>
             </div>
           </TerminalWindow>
         </div>

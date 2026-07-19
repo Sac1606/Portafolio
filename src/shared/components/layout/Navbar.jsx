@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
-import { Link, NavLink } from "react-router-dom"
 import { HiOutlineCommandLine, HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2"
+import { TransitionLink } from "../ui/TransitionLink"
 
 const links = [
   { to: "/", label: "Inicio", end: true },
@@ -39,9 +39,8 @@ export const Navbar = () => {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link
+        <TransitionLink
           to="/"
-          viewTransition
           onClick={close}
           className="group flex items-center gap-2 font-mono text-term-text transition-colors hover:text-term-green"
         >
@@ -51,19 +50,19 @@ export const Navbar = () => {
           <span className="hidden text-sm sm:inline">
             <span className="text-term-muted">~/</span>isaac
           </span>
-        </Link>
+        </TransitionLink>
 
         <ul className="hidden items-center gap-0.5 md:flex">
           {links.map((link) => (
             <li key={link.to}>
-              <NavLink
+              <TransitionLink
+                nav
                 to={link.to}
                 end={link.end}
-                viewTransition
                 className={linkClass}
               >
                 {link.label}
-              </NavLink>
+              </TransitionLink>
             </li>
           ))}
         </ul>
@@ -88,10 +87,10 @@ export const Navbar = () => {
           <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
             {links.map((link) => (
               <li key={link.to}>
-                <NavLink
+                <TransitionLink
+                  nav
                   to={link.to}
                   end={link.end}
-                  viewTransition
                   onClick={close}
                   className={({ isActive }) =>
                     `block rounded-md px-3 py-3 font-mono text-sm transition-colors ${
@@ -102,7 +101,7 @@ export const Navbar = () => {
                   }
                 >
                   {link.label}
-                </NavLink>
+                </TransitionLink>
               </li>
             ))}
           </ul>
