@@ -32,7 +32,7 @@ export const Navbar = () => {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`site-header fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
           ? "border-b border-term-border/90 bg-term-bg/85 backdrop-blur-xl"
           : "bg-transparent"
@@ -41,6 +41,7 @@ export const Navbar = () => {
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           to="/"
+          viewTransition
           onClick={close}
           className="group flex items-center gap-2 font-mono text-term-text transition-colors hover:text-term-green"
         >
@@ -55,7 +56,12 @@ export const Navbar = () => {
         <ul className="hidden items-center gap-0.5 md:flex">
           {links.map((link) => (
             <li key={link.to}>
-              <NavLink to={link.to} end={link.end} className={linkClass}>
+              <NavLink
+                to={link.to}
+                end={link.end}
+                viewTransition
+                className={linkClass}
+              >
                 {link.label}
               </NavLink>
             </li>
@@ -85,6 +91,7 @@ export const Navbar = () => {
                 <NavLink
                   to={link.to}
                   end={link.end}
+                  viewTransition
                   onClick={close}
                   className={({ isActive }) =>
                     `block rounded-md px-3 py-3 font-mono text-sm transition-colors ${
