@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { HiOutlineCommandLine, HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2"
 
@@ -19,25 +19,11 @@ const linkClass = ({ isActive }) =>
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
 
   const close = () => setOpen(false)
 
   return (
-    <header
-      className={`site-header fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-term-border/90 bg-term-bg/85 backdrop-blur-xl"
-          : "bg-transparent"
-      }`}
-    >
+    <header className="site-header fixed inset-x-0 top-0 z-50 bg-term-bg/80 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           to="/"
