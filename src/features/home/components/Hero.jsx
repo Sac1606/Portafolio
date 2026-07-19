@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 import { profile } from "../../../data/profile"
-import heroPc from "../../../assets/img/hero-pc.jpg"
 import { TerminalWindow } from "../../../shared/components/ui/TerminalWindow"
 import { TerminalPrompt } from "../../../shared/components/ui/TerminalPrompt"
+import { DesktopPC } from "./DesktopPC"
 
 const bootLines = [
   { type: "prompt", command: "whoami" },
@@ -62,14 +62,8 @@ export const Hero = () => {
           </TerminalWindow>
         </div>
 
-        <div>
-          <TerminalWindow title="preview — hardware.img" bodyClassName="!p-0">
-            <img
-              src={heroPc}
-              alt="Case de PC abierto con placa madre y ventiladores"
-              className="aspect-[16/10] w-full object-cover"
-            />
-          </TerminalWindow>
+        <div className="min-w-0">
+          <DesktopPC />
         </div>
       </div>
     </section>
