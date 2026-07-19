@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom"
 import { HiOutlineCommandLine } from "react-icons/hi2"
 import { profile } from "../../../data/profile"
-import { TransitionLink } from "../ui/TransitionLink"
 
 export const Footer = () => {
   const year = new Date().getFullYear()
@@ -15,9 +15,9 @@ export const Footer = () => {
           </span>
         </div>
         <p className="font-mono text-xs text-term-muted">
-          <TransitionLink to="/" className="hover:text-term-green">
+          <Link to="/" className="hover:text-term-green">
             cd ~/
-          </TransitionLink>
+          </Link>
           <span className="mx-2 text-term-border">|</span>
           React · JS · Tailwind
         </p>

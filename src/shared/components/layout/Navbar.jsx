@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
+import { Link, NavLink } from "react-router-dom"
 import { HiOutlineCommandLine, HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2"
-import { TransitionLink } from "../ui/TransitionLink"
 
 const links = [
   { to: "/", label: "Inicio", end: true },
@@ -39,7 +39,7 @@ export const Navbar = () => {
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <TransitionLink
+        <Link
           to="/"
           onClick={close}
           className="group flex items-center gap-2 font-mono text-term-text transition-colors hover:text-term-green"
@@ -50,19 +50,14 @@ export const Navbar = () => {
           <span className="hidden text-sm sm:inline">
             <span className="text-term-muted">~/</span>isaac
           </span>
-        </TransitionLink>
+        </Link>
 
         <ul className="hidden items-center gap-0.5 md:flex">
           {links.map((link) => (
             <li key={link.to}>
-              <TransitionLink
-                nav
-                to={link.to}
-                end={link.end}
-                className={linkClass}
-              >
+              <NavLink to={link.to} end={link.end} className={linkClass}>
                 {link.label}
-              </TransitionLink>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -87,8 +82,7 @@ export const Navbar = () => {
           <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
             {links.map((link) => (
               <li key={link.to}>
-                <TransitionLink
-                  nav
+                <NavLink
                   to={link.to}
                   end={link.end}
                   onClick={close}
@@ -101,7 +95,7 @@ export const Navbar = () => {
                   }
                 >
                   {link.label}
-                </TransitionLink>
+                </NavLink>
               </li>
             ))}
           </ul>
