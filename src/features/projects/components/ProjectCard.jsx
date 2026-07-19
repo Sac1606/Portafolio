@@ -5,7 +5,7 @@ import { Card } from "../../../shared/components/ui/Card"
 export const ProjectCard = ({ project }) => {
   return (
     <Card className="flex h-full flex-col overflow-hidden !p-0">
-      <div className="relative aspect-[16/10] overflow-hidden bg-hw-circuit">
+      <div className="relative aspect-[16/10] overflow-hidden bg-term-grid">
         {project.image ? (
           <img
             src={project.image}
@@ -14,30 +14,32 @@ export const ProjectCard = ({ project }) => {
             loading="lazy"
           />
         ) : (
-          <div className="flex h-full items-center justify-center text-hw-text-muted">
+          <div className="flex h-full items-center justify-center text-term-muted">
             <HiOutlineCodeBracket className="h-10 w-10" aria-hidden />
           </div>
         )}
         {project.featured && (
-          <span className="absolute left-3 top-3 rounded-full border border-hw-accent/40 bg-hw-bg/80 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-hw-accent backdrop-blur">
-            Principal
+          <span className="absolute left-3 top-3 rounded border border-term-green/40 bg-term-bg/85 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-term-green backdrop-blur">
+            principal
           </span>
         )}
       </div>
 
       <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
         <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-hw-text">{project.title}</h3>
-          <p className="text-sm leading-relaxed text-hw-text-muted">
+          <h3 className="font-mono text-xl font-semibold text-term-text">
+            {project.title}
+          </h3>
+          <p className="text-sm leading-relaxed text-term-muted">
             {project.description}
           </p>
         </div>
 
-        <div className="rounded-xl border border-hw-border/80 bg-hw-surface/70 p-3">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-hw-accent">
-            Habilidades aprendidas
+        <div className="rounded-md border border-term-border/80 bg-term-surface/80 p-3">
+          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-term-green">
+            habilidades_aprendidas
           </p>
-          <p className="mt-1.5 text-sm leading-relaxed text-hw-text-muted">
+          <p className="mt-1.5 text-sm leading-relaxed text-term-muted">
             {project.skillsLearned}
           </p>
         </div>
@@ -46,7 +48,7 @@ export const ProjectCard = ({ project }) => {
           {project.tech.map((tag) => (
             <span
               key={tag}
-              className="rounded-md border border-hw-border bg-hw-bg px-2 py-1 text-xs text-hw-text-muted"
+              className="rounded border border-term-border bg-term-bg px-2 py-1 font-mono text-xs text-term-muted"
             >
               {tag}
             </span>
@@ -59,10 +61,10 @@ export const ProjectCard = ({ project }) => {
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg border border-hw-border bg-hw-bg px-3 py-2 text-xs font-semibold text-hw-text transition hover:border-hw-accent/40 hover:text-hw-accent"
+              className="inline-flex items-center gap-2 rounded-md border border-term-border bg-term-bg px-3 py-2 font-mono text-xs font-semibold text-term-text transition hover:border-term-green/40 hover:text-term-green"
             >
               <FaGithub className="h-3.5 w-3.5" aria-hidden />
-              Repositorio
+              repositorio
             </a>
           )}
           {project.demoUrl && (
@@ -70,9 +72,9 @@ export const ProjectCard = ({ project }) => {
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-lg bg-hw-accent/15 px-3 py-2 text-xs font-semibold text-hw-accent transition hover:bg-hw-accent/25"
+              className="inline-flex items-center gap-2 rounded-md bg-term-green/15 px-3 py-2 font-mono text-xs font-semibold text-term-green transition hover:bg-term-green/25"
             >
-              Demo
+              demo
               <HiOutlineArrowTopRightOnSquare className="h-3.5 w-3.5" aria-hidden />
             </a>
           )}
