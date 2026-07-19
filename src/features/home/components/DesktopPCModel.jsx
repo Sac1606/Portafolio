@@ -3,6 +3,8 @@ import { useFrame } from "@react-three/fiber"
 import { useGLTF, Center } from "@react-three/drei"
 import * as THREE from "three"
 import { pc3dConfig } from "../../../data/pc3d"
+// Import con ?url: Vite sirve el archivo real (no el HTML del SPA).
+import pcModelUrl from "../../../assets/models/PC.glb?url"
 
 const RGB_MATERIAL_NAMES = new Set([
   "RgbLighting",
@@ -62,7 +64,8 @@ export function DesktopPCModel({
   onInteractStart,
   onInteractEnd,
 }) {
-  const { scene } = useGLTF(pc3dConfig.modelUrl)
+  // true = decodificador Draco (CDN de Google) para el GLB optimizado
+  const { scene } = useGLTF(pcModelUrl, true)
   const groupRef = useRef(null)
   const rgbMats = useRef([])
   const screenMats = useRef([])
@@ -154,7 +157,6 @@ export function DesktopPCModel({
     <group ref={groupRef}>
       <Center top>
         <group
-          // Ajuste de orientación del modelo hacia la cámara
           rotation={[0, Math.PI * 0.15, 0]}
           onPointerDown={(e) => {
             e.stopPropagation()
@@ -175,4 +177,4 @@ export function DesktopPCModel({
   )
 }
 
-useGLTF.preload(pc3dConfig.modelUrl)
+useGLTF.preload(pcModelUrl, true)

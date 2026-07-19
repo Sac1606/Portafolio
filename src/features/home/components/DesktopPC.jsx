@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react"
 import { TerminalWindow } from "../../../shared/components/ui/TerminalWindow"
+import { DesktopPCErrorBoundary } from "./DesktopPCErrorBoundary"
 
 const DesktopPCScene = lazy(() =>
   import("./DesktopPCScene").then((m) => ({ default: m.DesktopPCScene }))
@@ -16,10 +17,15 @@ function PCFallback() {
 /** PC 3D interactiva para el hero (lazy + ventana terminal). */
 export function DesktopPC() {
   return (
-    <TerminalWindow title="isaac@portfolio:~/desktop-pc" bodyClassName="!p-0 overflow-hidden">
-      <Suspense fallback={<PCFallback />}>
-        <DesktopPCScene />
-      </Suspense>
+    <TerminalWindow
+      title="isaac@portfolio:~/desktop-pc"
+      bodyClassName="!p-0 overflow-hidden"
+    >
+      <DesktopPCErrorBoundary>
+        <Suspense fallback={<PCFallback />}>
+          <DesktopPCScene />
+        </Suspense>
+      </DesktopPCErrorBoundary>
     </TerminalWindow>
   )
 }
