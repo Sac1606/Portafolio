@@ -1,24 +1,34 @@
-export const SectionTitle = ({ eyebrow, title, subtitle, align = "left" }) => {
+import { TerminalPrompt } from "./TerminalPrompt"
+
+export const SectionTitle = ({
+  eyebrow,
+  title,
+  subtitle,
+  align = "left",
+  command,
+}) => {
   const alignment =
     align === "center" ? "text-center items-center" : "text-left items-start"
 
   return (
     <div className={`mb-10 flex flex-col gap-3 ${alignment}`}>
-      {eyebrow && (
-        <span className="text-xs font-semibold uppercase tracking-[0.28em] text-hw-accent">
-          {eyebrow}
-        </span>
+      {(command || eyebrow) && (
+        <TerminalPrompt
+          command={command || `cat ${String(eyebrow).toLowerCase().replace(/\s+/g, "-")}.md`}
+          className={align === "center" ? "w-full text-center" : ""}
+        />
       )}
-      <h2 className="text-2xl font-bold tracking-tight text-hw-text sm:text-3xl md:text-4xl">
+      <h1 className="font-mono text-2xl font-bold tracking-tight text-term-text sm:text-3xl md:text-4xl">
+        <span className="text-term-green"># </span>
         {title}
-      </h2>
+      </h1>
       {subtitle && (
-        <p className="max-w-2xl text-sm leading-relaxed text-hw-text-muted sm:text-base">
+        <p className="max-w-2xl text-sm leading-relaxed text-term-muted sm:text-base">
           {subtitle}
         </p>
       )}
       <div
-        className={`h-px w-24 bg-gradient-to-r from-hw-accent via-hw-matrix to-transparent ${
+        className={`h-px w-28 bg-gradient-to-r from-term-green via-term-cyan to-transparent ${
           align === "center" ? "mx-auto" : ""
         }`}
       />
