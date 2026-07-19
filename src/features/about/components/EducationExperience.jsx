@@ -5,24 +5,24 @@ import { profile } from "../../../data/profile"
 const Timeline = ({ icon: Icon, title, items }) => (
   <Card hover={false} className="space-y-5">
     <div className="flex items-center gap-3">
-      <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-hw-border bg-hw-surface text-hw-accent">
+      <span className="flex h-10 w-10 items-center justify-center rounded-md border border-term-border bg-term-surface text-term-green">
         <Icon className="h-5 w-5" aria-hidden />
       </span>
-      <h3 className="text-lg font-semibold text-hw-text">{title}</h3>
+      <h2 className="font-mono text-lg font-semibold text-term-text">{title}</h2>
     </div>
 
-    <ol className="relative space-y-6 border-l border-hw-border pl-6">
+    <ol className="relative space-y-6 border-l border-term-border pl-6">
       {items.map((item) => (
         <li key={`${item.title}-${item.period}`} className="relative">
-          <span className="absolute -left-[1.9rem] top-1.5 h-3 w-3 rounded-full border-2 border-hw-accent bg-hw-bg shadow-[0_0_10px_var(--color-hw-accent)]" />
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-hw-accent">
+          <span className="absolute -left-[1.9rem] top-1.5 h-2.5 w-2.5 rounded-full border border-term-green bg-term-bg shadow-[0_0_8px_var(--color-term-green)]" />
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.14em] text-term-green">
             {item.period}
           </p>
-          <h4 className="mt-1 text-base font-semibold text-hw-text">
+          <h3 className="mt-1 text-base font-semibold text-term-text">
             {item.title}
-          </h4>
-          <p className="text-sm text-hw-matrix/90">{item.place}</p>
-          <p className="mt-2 text-sm leading-relaxed text-hw-text-muted">
+          </h3>
+          <p className="font-mono text-sm text-term-cyan/90">{item.place}</p>
+          <p className="mt-2 text-sm leading-relaxed text-term-muted">
             {item.description}
           </p>
         </li>

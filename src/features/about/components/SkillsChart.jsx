@@ -1,13 +1,17 @@
 import { SkillBar } from "../../../shared/components/ui/SkillBar"
 import { Card } from "../../../shared/components/ui/Card"
+import { TerminalPrompt } from "../../../shared/components/ui/TerminalPrompt"
 import { profile } from "../../../data/profile"
 
 export const SkillsChart = () => {
   return (
     <Card hover={false} className="space-y-5">
       <div>
-        <h3 className="text-lg font-semibold text-hw-text">Habilidades</h3>
-        <p className="mt-1 text-sm text-hw-text-muted">
+        <TerminalPrompt command="ls skills/" />
+        <h2 className="mt-2 font-mono text-lg font-semibold text-term-text">
+          Habilidades
+        </h2>
+        <p className="mt-1 text-sm text-term-muted">
           Nivel aproximado en lenguajes, frameworks y herramientas que uso con
           más frecuencia.
         </p>
