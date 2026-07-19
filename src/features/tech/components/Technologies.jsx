@@ -35,10 +35,10 @@ const iconMap = {
 
 export const Technologies = () => {
   return (
-    <section id="tecnologias" className="scroll-mt-24 py-20 sm:py-24">
+    <section className="py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          eyebrow="Stack"
+          command="npx stack --list"
           title="Tecnologías"
           subtitle="Herramientas y lenguajes con los que construyo interfaces, APIs y prototipos."
           align="center"
@@ -52,11 +52,8 @@ export const Technologies = () => {
                 key={tech.name}
                 className="flex flex-col items-center justify-center gap-3 !p-4 text-center"
               >
-                <Icon
-                  className="h-8 w-8 text-hw-accent transition group-hover:text-hw-matrix"
-                  aria-hidden
-                />
-                <span className="text-xs font-medium text-hw-text-muted">
+                <Icon className="h-8 w-8 text-term-green" aria-hidden />
+                <span className="font-mono text-xs font-medium text-term-muted">
                   {tech.name}
                 </span>
               </Card>
