@@ -1,26 +1,23 @@
-import { Background } from "../shared/components/layout/Background"
-import { Navbar } from "../shared/components/layout/Navbar"
-import { Footer } from "../shared/components/layout/Footer"
-import { Hero } from "../features/hero/components/Hero"
-import { About } from "../features/about/components/About"
-import { Projects } from "../features/projects/components/Projects"
-import { Technologies } from "../features/tech/components/Technologies"
-import { Contact } from "../features/contact/components/Contact"
+import { useEffect } from "react"
+import { BrowserRouter, useLocation } from "react-router-dom"
+import { AppRoutes } from "./router/AppRoutes.jsx"
+
+function RouteScrollReset() {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
 
 function App() {
   return (
-    <div className="relative min-h-screen">
-      <Background />
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Projects />
-        <Technologies />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <RouteScrollReset />
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
 
