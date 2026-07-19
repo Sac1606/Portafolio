@@ -28,7 +28,7 @@ export const SectionTitle = ({
         </p>
       )}
       <div
-        className={`h-px w-28 bg-gradient-to-r from-term-green via-term-cyan to-transparent ${
+        className={`h-px w-28 bg-gradient-to-r from-term-green via-term-green-dim to-transparent ${
           align === "center" ? "mx-auto" : ""
         }`}
       />

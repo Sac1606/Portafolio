@@ -21,7 +21,7 @@ const Timeline = ({ icon: Icon, title, items }) => (
           <h3 className="mt-1 text-base font-semibold text-term-text">
             {item.title}
           </h3>
-          <p className="font-mono text-sm text-term-cyan/90">{item.place}</p>
+          <p className="font-mono text-sm text-term-green-dim">{item.place}</p>
           <p className="mt-2 text-sm leading-relaxed text-term-muted">
             {item.description}
           </p>

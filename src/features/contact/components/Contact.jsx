@@ -16,7 +16,7 @@ const socialLinks = [
     href: profile.social.linkedin,
     description: "Perfil profesional para oportunidades y networking.",
     icon: FaLinkedin,
-    accent: "text-term-cyan",
+    accent: "text-term-green",
   },
   {
     name: "CompuTrabajo",

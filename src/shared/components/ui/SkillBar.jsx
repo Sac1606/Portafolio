@@ -9,7 +9,7 @@ export const SkillBar = ({ name, level, delay = 0 }) => {
       </div>
       <div className="h-1.5 overflow-hidden rounded-sm bg-term-grid">
         <motion.div
-          className="h-full rounded-sm bg-gradient-to-r from-term-green to-term-cyan"
+          className="h-full rounded-sm bg-gradient-to-r from-term-green-dim to-term-green"
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
           viewport={{ once: true, amount: 0.6 }}

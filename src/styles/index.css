@@ -10,7 +10,6 @@
   --color-term-muted: #7A8A7E;
   --color-term-green: #3DDC84;
   --color-term-green-dim: #6B8F71;
-  --color-term-cyan: #5CE1E6;
   --color-term-amber: #E6B84D;
   --color-term-red: #E06C75;
 
@@ -21,8 +20,8 @@
   --color-hw-circuit: var(--color-term-grid);
   --color-hw-accent: var(--color-term-green);
   --color-hw-accent-soft: #3DDC8433;
-  --color-hw-matrix: var(--color-term-cyan);
-  --color-hw-matrix-soft: #5CE1E622;
+  --color-hw-matrix: var(--color-term-green);
+  --color-hw-matrix-soft: #3DDC8422;
   --color-hw-text: var(--color-term-text);
   --color-hw-text-muted: var(--color-term-muted);
   --color-hw-border: var(--color-term-border);
