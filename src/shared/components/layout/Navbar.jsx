@@ -1,17 +1,17 @@
 import { useState } from "react"
 import { Link, NavLink } from "react-router-dom"
-import { HiOutlineCommandLine, HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2"
+import { HiOutlineBars3, HiOutlineXMark } from "react-icons/hi2"
 
 const links = [
   { to: "/", label: "Inicio", end: true },
-  { to: "/sobre-mi", label: "Sobre mí" },
+  { to: "/sobre-mi", label: "Sobre mi" },
   { to: "/proyectos", label: "Proyectos" },
-  { to: "/tecnologias", label: "Tecnologías" },
+  { to: "/tecnologias", label: "Tecnologias" },
   { to: "/contacto", label: "Contacto" },
 ]
 
 const linkClass = ({ isActive }) =>
-  `relative px-3 py-2 font-mono text-sm transition-colors ${
+  `relative px-1 py-2 font-mono text-[13px] transition-colors ${
     isActive
       ? "nav-link-active text-term-green"
       : "text-term-muted hover:text-term-text"
@@ -19,26 +19,21 @@ const linkClass = ({ isActive }) =>
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false)
-
   const close = () => setOpen(false)
 
   return (
-    <header className="site-header fixed inset-x-0 top-0 z-50 bg-term-bg/80 backdrop-blur-xl">
+    <header className="site-header fixed inset-x-0 top-0 z-50 border-b border-term-border-soft bg-term-bg/90 backdrop-blur-xl">
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link
           to="/"
           onClick={close}
-          className="group flex items-center gap-2 font-mono text-term-text transition-colors hover:text-term-green"
+          className="flex items-center gap-2 font-mono text-sm text-term-text transition-colors hover:text-term-green"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-md border border-term-border bg-term-surface text-term-green">
-            <HiOutlineCommandLine className="h-5 w-5" aria-hidden />
-          </span>
-          <span className="hidden text-sm sm:inline">
-            <span className="text-term-muted">~/</span>isaac
-          </span>
+          <span className="font-semibold text-term-green">&gt;_</span>
+          <span>~/isaac</span>
         </Link>
 
-        <ul className="hidden items-center gap-0.5 md:flex">
+        <ul className="hidden items-center gap-7 md:flex">
           {links.map((link) => (
             <li key={link.to}>
               <NavLink to={link.to} end={link.end} className={linkClass}>
@@ -64,7 +59,7 @@ export const Navbar = () => {
       </nav>
 
       {open && (
-        <div className="border-t border-term-border bg-term-bg/95 backdrop-blur-xl md:hidden">
+        <div className="border-t border-term-border-soft bg-term-bg/95 backdrop-blur-xl md:hidden">
           <ul className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-4">
             {links.map((link) => (
               <li key={link.to}>

@@ -1,37 +1,43 @@
-import { TerminalPrompt } from "./TerminalPrompt"
-
+/**
+ * Etiqueta de sección del mock: $ comando ────────
+ * + título y subtítulo opcionales debajo.
+ */
 export const SectionTitle = ({
-  eyebrow,
   title,
   subtitle,
   align = "left",
   command,
+  eyebrow,
 }) => {
+  const label =
+    command ||
+    (eyebrow
+      ? `pnpm ${String(eyebrow).toLowerCase().replace(/\s+/g, "-")}.md`
+      : null)
+
   const alignment =
     align === "center" ? "text-center items-center" : "text-left items-start"
 
   return (
-    <div className={`mb-10 flex flex-col gap-3 ${alignment}`}>
-      {(command || eyebrow) && (
-        <TerminalPrompt
-          command={command || `cat ${String(eyebrow).toLowerCase().replace(/\s+/g, "-")}.md`}
-          className={align === "center" ? "w-full text-center" : ""}
-        />
+    <div className={`mb-8 flex w-full flex-col gap-3 ${alignment}`}>
+      {label && (
+        <div
+          className={`section-label w-full ${align === "center" ? "justify-center" : ""}`}
+        >
+          <span className="tag">$</span>
+          <span>{label}</span>
+        </div>
       )}
-      <h1 className="font-mono text-2xl font-bold tracking-tight text-term-text sm:text-3xl md:text-4xl">
-        <span className="text-term-green"># </span>
-        {title}
-      </h1>
+      {title && (
+        <h1 className="font-mono text-xl font-semibold tracking-tight text-term-text sm:text-2xl md:text-3xl">
+          {title}
+        </h1>
+      )}
       {subtitle && (
-        <p className="max-w-2xl text-sm leading-relaxed text-term-muted sm:text-base">
+        <p className="max-w-2xl text-[13px] leading-relaxed text-term-muted sm:text-sm">
           {subtitle}
         </p>
       )}
-      <div
-        className={`h-px w-28 bg-gradient-to-r from-term-green via-term-green-dim to-transparent ${
-          align === "center" ? "mx-auto" : ""
-        }`}
-      />
     </div>
   )
 }

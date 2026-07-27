@@ -1,11 +1,27 @@
 import { HiOutlineArrowTopRightOnSquare, HiOutlineCodeBracket } from "react-icons/hi2"
 import { FaGithub } from "react-icons/fa"
-import { Card } from "../../../shared/components/ui/Card"
 
+/**
+ * Card de proyecto con marco terminal.
+ * Sin h-full forzado ni overflow que recorte botones.
+ */
 export const ProjectCard = ({ project }) => {
   return (
-    <Card className="flex h-full flex-col overflow-hidden !p-0">
-      <div className="relative aspect-[16/10] overflow-hidden bg-term-grid">
+    <article className="flex flex-col overflow-hidden rounded-lg border border-term-border bg-term-surface">
+      {/* Header tipo ventana */}
+      <div className="flex shrink-0 items-center gap-3.5 border-b border-term-border bg-term-elevated px-3.5 py-2.5">
+        <div className="flex items-center gap-1.5" aria-hidden>
+          <span className="h-2.5 w-2.5 rounded-full bg-term-red" />
+          <span className="h-2.5 w-2.5 rounded-full bg-term-amber" />
+          <span className="h-2.5 w-2.5 rounded-full bg-term-dot-green" />
+        </div>
+        <p className="min-w-0 flex-1 truncate font-mono text-xs text-term-muted">
+          ~/proyectos/{project.id}
+        </p>
+      </div>
+
+      {/* Imagen: único bloque con overflow hidden */}
+      <div className="relative aspect-[16/9] w-full shrink-0 overflow-hidden bg-term-grid">
         {project.image ? (
           <img
             src={project.image}
@@ -25,21 +41,22 @@ export const ProjectCard = ({ project }) => {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col gap-4 p-5 sm:p-6">
+      {/* Contenido: crece con el texto, sin recortar botones */}
+      <div className="flex flex-1 flex-col gap-4 px-5 pb-6 pt-5 sm:px-6 sm:pb-7 sm:pt-6">
         <div className="space-y-2">
-          <h3 className="font-mono text-xl font-semibold text-term-text">
-            {project.title}
+          <h3 className="font-mono text-lg font-semibold text-term-green-bright sm:text-xl">
+            {project.title}/
           </h3>
           <p className="text-sm leading-relaxed text-term-muted">
             {project.description}
           </p>
         </div>
 
-        <div className="rounded-md border border-term-border/80 bg-term-surface/80 p-3">
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-term-green">
-            habilidades_aprendidas
+        <div className="rounded-md border border-term-border-soft bg-term-bg/60 p-3.5">
+          <p className="font-mono text-[11px] font-semibold text-term-cyan">
+            // habilidades_aprendidas
           </p>
-          <p className="mt-1.5 text-sm leading-relaxed text-term-muted">
+          <p className="mt-1.5 text-[13px] leading-relaxed text-term-muted">
             {project.skillsLearned}
           </p>
         </div>
@@ -48,22 +65,23 @@ export const ProjectCard = ({ project }) => {
           {project.tech.map((tag) => (
             <span
               key={tag}
-              className="rounded border border-term-border bg-term-bg px-2 py-1 font-mono text-xs text-term-muted"
+              className="rounded border border-term-border px-2.5 py-1 font-mono text-[11px] text-term-cyan"
             >
-              {tag}
+              {tag.toLowerCase()}
             </span>
           ))}
         </div>
 
-        <div className="mt-auto flex flex-wrap gap-2 pt-1">
+        {/* Botones siempre visibles, con espacio al borde */}
+        <div className="mt-1 flex flex-wrap items-center gap-2.5 border-t border-term-border-soft pt-4">
           {project.repoUrl && (
             <a
               href={project.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md border border-term-border bg-term-bg px-3 py-2 font-mono text-xs font-semibold text-term-text transition hover:border-term-green/40 hover:text-term-green"
+              className="term-btn shrink-0 whitespace-nowrap"
             >
-              <FaGithub className="h-3.5 w-3.5" aria-hidden />
+              <FaGithub className="mr-1.5 h-3.5 w-3.5 shrink-0" aria-hidden />
               repositorio
             </a>
           )}
@@ -72,14 +90,17 @@ export const ProjectCard = ({ project }) => {
               href={project.demoUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-md bg-term-green/15 px-3 py-2 font-mono text-xs font-semibold text-term-green transition hover:bg-term-green/25"
+              className="term-btn term-btn-primary shrink-0 whitespace-nowrap"
             >
               demo
-              <HiOutlineArrowTopRightOnSquare className="h-3.5 w-3.5" aria-hidden />
+              <HiOutlineArrowTopRightOnSquare
+                className="ml-1.5 h-3.5 w-3.5 shrink-0"
+                aria-hidden
+              />
             </a>
           )}
         </div>
       </div>
-    </Card>
+    </article>
   )
 }

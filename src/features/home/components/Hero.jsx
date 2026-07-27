@@ -2,69 +2,56 @@ import { Link } from "react-router-dom"
 import { profile } from "../../../data/profile"
 import { TerminalWindow } from "../../../shared/components/ui/TerminalWindow"
 import { TerminalPrompt } from "../../../shared/components/ui/TerminalPrompt"
-import { DesktopPC } from "./DesktopPC"
-
-const bootLines = [
-  { type: "prompt", command: "whoami" },
-  { type: "out", text: profile.name },
-  { type: "prompt", command: "cat role.txt" },
-  { type: "out", text: profile.title },
-  { type: "prompt", command: "echo $TAGLINE" },
-  { type: "out", text: `"${profile.tagline}"` },
-]
+import { HERO_PC_SLOT_ID } from "./PersistentDesktopPC"
 
 export const Hero = () => {
   return (
-    <section className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl flex-col justify-center px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
-        <div>
+    <section className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-7xl flex-col justify-center px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+      <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-6 xl:gap-10">
+        <div className="min-w-0 lg:pr-2">
           <TerminalWindow
-            title="isaac@portfolio:~/welcome"
-            bodyClassName="space-y-4 font-mono text-sm"
+            title="isaac@portfolio: ~/welcome"
+            bodyClassName="space-y-0 font-mono text-sm"
           >
-            <div className="space-y-1.5">
-              {bootLines.map((line, i) =>
-                line.type === "prompt" ? (
-                  <TerminalPrompt key={i} command={line.command} />
-                ) : (
-                  <p key={i} className="pl-1 text-term-text">
-                    {line.text}
-                  </p>
-                )
-              )}
-              <TerminalPrompt command="" />
-              <p className="pl-1 text-term-muted">
-                <span className="text-term-green-dim"># </span>
+            <div className="space-y-1">
+              <TerminalPrompt command="git" />
+              <p className="mb-3.5 text-term-text">{profile.name}</p>
+
+              <TerminalPrompt command="pnpm role.txt" />
+              <p className="mb-3.5 text-term-text">{profile.title}</p>
+
+              <TerminalPrompt command="echo $TAGLINE" />
+              <p className="mb-3.5 font-semibold text-term-green-bright">
+                &quot;{profile.tagline}&quot;
+              </p>
+
+              <TerminalPrompt showCursor />
+
+              <p className="mt-3 text-[13px] text-term-muted">
+                <span className="text-term-mute"># </span>
                 {profile.welcome}
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-2 border-t border-term-border pt-4">
-              <Link
-                to="/proyectos"
-                className="inline-flex items-center rounded-md bg-term-green px-4 py-2 font-mono text-xs font-semibold text-term-bg transition hover:brightness-110 sm:text-sm"
-              >
+            <div className="mt-[18px] flex flex-wrap gap-2.5">
+              <Link to="/proyectos" className="term-btn term-btn-primary">
                 [ proyectos ]
               </Link>
-              <Link
-                to="/contacto"
-                className="inline-flex items-center rounded-md border border-term-border bg-term-elevated px-4 py-2 font-mono text-xs font-semibold text-term-text transition hover:border-term-green/40 hover:text-term-green sm:text-sm"
-              >
+              <Link to="/contacto" className="term-btn">
                 [ contacto ]
               </Link>
-              <Link
-                to="/sobre-mi"
-                className="inline-flex items-center rounded-md border border-term-border bg-term-elevated px-4 py-2 font-mono text-xs font-semibold text-term-muted transition hover:text-term-text sm:text-sm"
-              >
+              <Link to="/sobre-mi" className="term-btn">
                 [ sobre-mi ]
               </Link>
             </div>
           </TerminalWindow>
         </div>
 
-        <div className="min-w-0">
-          <DesktopPC />
-        </div>
+        <div
+          id={HERO_PC_SLOT_ID}
+          className="relative min-w-0 lg:-mr-4 lg:min-h-[680px] xl:min-h-[720px]"
+          style={{ minHeight: 520 }}
+        />
       </div>
     </section>
   )

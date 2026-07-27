@@ -1,27 +1,67 @@
-/**
- * Configuración del PC 3D del inicio.
- * Cambia coolerScreen para usar tu imagen o video en la pantallita del cooler.
- * Formatos: .jpg .png .webp .mp4 .webm
- * Coloca el archivo en public/media/ y actualiza la ruta.
- *
- * El modelo se importa desde src/assets (ver DesktopPCModel) para que Vite
- * resuelva la URL real y no caiga en el index.html del SPA.
- */
+
 export const pc3dConfig = {
-  /** Imagen o video que se muestra en la pantallita del cooler */
-  coolerScreen: "/media/cooler-screen.jpg",
-  /** true si coolerScreen es video */
+
+  coolerScreen: "../../public/media/realmadrid.jpg",
+
   coolerScreenIsVideo: false,
-  /** Colores RGB al hacer click */
+  coolerScreenFit: "cover",
+  coolerScreenTextureSize: 1024,
+  coolerScreenZoom: 1,
+
+  coolerScreenOffsetX: 0,
+  coolerScreenOffsetY: 0,
+  coolerScreenRotation: -90,
+
+  coolerScreenBrightness: 1.6,
+  coolerScreenFlipY: false,
+  coolerScreenHideLogo: true,
+  coolerRingGlow: false,
+  modelScale: 2.65,
+
   colors: [
-    "#3DDC84", // verde terminal
-    "#00BFFF", // azul eléctrico
-    "#FF2D95", // rosa
-    "#A855F7", // violeta
-    "#F59E0B", // ámbar
-    "#22D3EE", // cian
-    "#EF4444", // rojo
+    "#3DDC84",
+    "#00BFFF",
+    "#FF2D95",
+    "#A855F7",
+    "#F59E0B",
+    "#22D3EE",
+    "#EF4444",
   ],
-  /** ms para considerar "mantener apretado" y apagar luces */
   holdMs: 450,
+
+  fanNodeNames: [],
+  fanAxis: "z",
+  fanSpeed: 18,
+  fanSpeedOff: 0,
+}
+
+export function resolveCoolerScreenUrl(input) {
+  if (!input || typeof input !== "string") return "/media/cooler-screen.jpg"
+  let u = input.trim().replace(/\\/g, "/")
+
+  u = u.replace(/^(\.\.\/)+/, "")
+  u = u.replace(/^public\//i, "")
+
+  if (/^[a-zA-Z]:\//.test(u) || u.startsWith("file:")) {
+    console.warn(
+      "[pc3d] Ruta de disco no válida. Usa /media/archivo.ext o ../../public/media/archivo.ext — recibido:",
+      input
+    )
+    return "/media/cooler-screen.jpg"
+  }
+
+  if (
+    !u.startsWith("/") &&
+    !u.startsWith("http://") &&
+    !u.startsWith("https://") &&
+    !u.startsWith("blob:")
+  ) {
+    u = `/${u}`
+  }
+
+  if (import.meta.env.DEV) {
+    console.info("[pc3d] coolerScreen resuelto:", input, "→", u)
+  }
+
+  return u
 }

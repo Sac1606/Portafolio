@@ -18,12 +18,13 @@ export class DesktopPCErrorBoundary extends Component {
 
   componentDidCatch(error) {
     console.error("[DesktopPC]", error)
+    this.props.onError?.(error)
   }
 
   render() {
     if (this.state.hasError) {
       return (
-        <div className="flex h-[320px] flex-col items-center justify-center gap-2 px-4 text-center sm:h-[380px] lg:h-[440px]">
+        <div className="flex h-[480px] flex-col items-center justify-center gap-2 px-4 text-center sm:h-[580px] lg:h-[680px]">
           <p className="font-mono text-sm text-term-green">// pc_offline</p>
           <p className="max-w-sm text-xs text-term-muted">
             No se pudo cargar el modelo 3D. El resto del portafolio sigue

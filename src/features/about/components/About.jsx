@@ -1,58 +1,79 @@
-import { HiCheckCircle } from "react-icons/hi2"
 import { SectionTitle } from "../../../shared/components/ui/SectionTitle"
-import { Card } from "../../../shared/components/ui/Card"
+import { TerminalWindow } from "../../../shared/components/ui/TerminalWindow"
+import { TerminalPrompt } from "../../../shared/components/ui/TerminalPrompt"
 import { profile } from "../../../data/profile"
 import { GeneralInfo } from "./GeneralInfo"
-import { SkillsChart } from "./SkillsChart"
 import { EducationExperience } from "./EducationExperience"
+import { ProfileAvatar } from "./ProfileAvatar"
+import { Services } from "./Services"
+import { Certificates } from "./Certificates"
 
 export const About = () => {
   return (
     <section className="py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <SectionTitle
-          command="cat about.md"
+          command="pnpm about.md"
           title={profile.title}
           subtitle="Información relevante sobre mi perfil como desarrollador, habilidades y trayectoria."
         />
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          <Card hover={false} className="space-y-5">
-            <h2 className="font-mono text-lg font-semibold text-term-text">
-              <span className="text-term-green">// </span>Quién soy
-            </h2>
-            <p className="text-sm leading-relaxed text-term-muted sm:text-base">
+        {/* Grid Principal con Avatar, Sobre Mí y Stats */}
+        <div className="grid gap-6 lg:grid-cols-[270px_1fr_290px] items-start">
+          {/* Columna 1: Foto / Avatar de Perfil */}
+          <ProfileAvatar />
+
+          {/* Columna 2: Descripción y Habilidades Clave */}
+          <TerminalWindow
+            title="isaac@portfolio: ~/about"
+            bodyClassName="space-y-1 font-mono text-sm"
+          >
+            <TerminalPrompt command="pnpm about.md" />
+            <p className="mb-3.5 text-[13px] leading-relaxed text-term-text sm:text-sm">
               {profile.about}
             </p>
-            <ul className="space-y-2.5">
+
+            <TerminalPrompt command="pnpm focus.md" />
+            <ul className="mb-1 space-y-1 text-[13px] text-term-muted">
               {profile.capabilities.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2.5 text-sm text-term-text"
-                >
-                  <HiCheckCircle
-                    className="mt-0.5 h-4 w-4 shrink-0 text-term-green"
-                    aria-hidden
-                  />
+                <li key={item} className="flex items-start gap-2">
+                  <span className="text-term-green select-none">&gt;</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
-          </Card>
+          </TerminalWindow>
 
-          <div className="space-y-4">
-            <h2 className="font-mono text-lg font-semibold text-term-text">
-              <span className="text-term-green">// </span>Datos generales
-            </h2>
+          {/* Columna 3: Stats e Información General */}
+          <TerminalWindow title="stats.json" bodyClassName="font-mono text-sm">
             <GeneralInfo />
+          </TerminalWindow>
+        </div>
+
+        {/* Servicios / Soluciones Tecnológicas */}
+        <div className="mt-12">
+          <div className="section-label">
+            <span className="tag">$</span>
+            <span>pnpm services.list --all</span>
           </div>
+          <Services />
         </div>
 
-        <div className="mt-10">
-          <SkillsChart />
+        {/* Certificaciones y Reconocimientos */}
+        <div className="mt-12">
+          <div className="section-label">
+            <span className="tag">$</span>
+            <span>ls certificates/</span>
+          </div>
+          <Certificates />
         </div>
 
-        <div className="mt-10">
+        {/* Educación y Experiencia */}
+        <div className="mt-12">
+          <div className="section-label">
+            <span className="tag">$</span>
+            <span>pnpm education.log experience.log</span>
+          </div>
           <EducationExperience />
         </div>
       </div>
