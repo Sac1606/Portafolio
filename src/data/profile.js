@@ -115,8 +115,8 @@ export const profile = {
       command: "ls skills/backend/",
       skills: [
         { name: ".NET Core / C#", level: 55 },
-        { name: "Node.js & Express", level: 75 },
-        { name: "Stack MERN (MongoDB)", level: 75 },
+        { name: "Node.js & Express", level: 60 },
+        { name: "Stack MERN (MongoDB)", level: 60 },
         { name: "Python", level: 60 },
       ],
     },
@@ -124,7 +124,7 @@ export const profile = {
       category: "Lenguajes",
       command: "ls skills/languages/",
       skills: [
-        { name: "JavaScript (ES6+)", level: 82 },
+        { name: "JavaScript (ES6+)", level: 65 },
         { name: "C# / .NET", level: 70 },
         { name: "Java", level: 65 },
         { name: "Python", level: 70 },
@@ -150,8 +150,8 @@ export const profile = {
       category: "Herramientas & Entornos",
       command: "ls skills/tools/",
       skills: [
-        { name: "Git & GitHub", level: 85 },
-        { name: "Vite & Build Tools", level: 80 },
+        { name: "Git & GitHub", level: 75 },
+        { name: "Vite & Build Tools", level: 70 },
       ],
     },
   ],
